@@ -78,10 +78,10 @@ if __name__ == '__main__':
 
     class TestNotification(BaseModel):
         id: int = '12345'
-        username: str = 'AN'
+        username: str = 'test'
         email: str = 'test@test.test'
-        users: list = ['AN']
-        template: str = 'string'
+        users: list = ['test']
+        template: str = 'new_registration'
         event: str = 'new_registration'
         content: dict = {}
 
