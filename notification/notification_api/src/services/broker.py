@@ -6,9 +6,10 @@ from aio_pika import Message, Connection
 from schemas.email import EmailNotification
 from core.config import rabbit_settings as rs
 from db.rabbit import get_conection, get_channel, get_exchange
+from utils.abstract import BaseBrokerService
 
 
-class BrokerService:
+class BrokerService(BaseBrokerService):
     def __init__(self, connection, channel, exchange) -> None:
         self.connection = connection
         self.channel = channel
