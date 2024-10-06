@@ -24,8 +24,6 @@ class BrokerService:
         await self.exchange.publish(routing_key=queue_name, message=message)
 
     async def send_to_broker(self, event: EmailNotification):
-        print(event)
-        print(type(event))
         await self.send_message(queue_name=f'email.{event.event}', data=event)
 
 
