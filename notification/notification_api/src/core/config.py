@@ -24,23 +24,6 @@ class Settings(BaseSettings):
 settings = Settings()
 
 
-class PostgresSettings(BaseSettings):
-    model_config = SettingsConfigDict(
-        env_prefix='postgres_',
-        env_file='../env/prod/.env',
-        env_file_encoding='utf-8',
-        extra='ignore'
-    )
-    db: str = ...
-    user: str = ...
-    password: str = ...
-    host: str = ...
-    port: int = ...
-
-
-pg = PostgresSettings()
-
-
 class RabbitSettings(BaseSettings):
     model_config = SettingsConfigDict(
         env_prefix='rabbit_',
