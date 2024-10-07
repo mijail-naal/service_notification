@@ -23,7 +23,7 @@ class EmailNotification(BaseModel):
 
 
 class UserModel(BaseModel):
-    id: int
+    id: str
     username: str
     email: EmailStr
 
