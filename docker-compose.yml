@@ -1,4 +1,7 @@
 # version: ${COMPOSE_VERSION}
+include:
+  - auth_service/docker-compose.yml
+
 services:
   rabbitmq:
     image: rabbitmq:${RABBITMQ_VERSION} 
@@ -62,6 +65,15 @@ services:
     networks:
         - all_service_network
 
+  mongodb:
+    container_name: "mongodb"
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    restart: unless-stopped
+    networks:
+      - all_service_network
+
   notification_api:
     container_name: "notification_api"
     build: ./notification/notification_api/src
@@ -98,7 +110,6 @@ services:
       - rabbitmq
     networks:
       - all_service_network
-      - auth_service_network
         
   mailhog:
     image: mailhog/mailhog
@@ -115,11 +126,3 @@ volumes:
   postgres_data:
   rabbitmq_data:
   static-volume:
-
-networks:
-  all_service_network:
-    driver: bridge
-
-
-include:
-  - auth_service/docker-compose.yml
