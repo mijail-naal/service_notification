@@ -3,7 +3,7 @@ import uvicorn
 
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, Request, Depends
+from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from fastapi.responses import ORJSONResponse
 from redis.asyncio import Redis
@@ -48,8 +48,8 @@ if __name__ == '__main__':
     uvicorn.run(
         'main:app',
         host='0.0.0.0',
-        port=8001,
+        port=8002,
         log_config=LOGGING,
         log_level=logging.DEBUG,
-        reload=True
+        # reload=True
     )

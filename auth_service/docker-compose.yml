@@ -6,14 +6,14 @@ services:
       volumes:
         - pg_auth_data:/var/lib/postgresql/data
       env_file:
-        - .env
+        - ./.env
       healthcheck:
         test: ["CMD-SHELL", "sh -c 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}'"]
         interval: ${INTERVAL_CHECK}
         timeout: ${TIMEOUT_CHECK}
         retries: ${RETRIES_CHECK}
       networks:
-        - auth_service_network
+        - all_service_network
 
     auth_redis:
       container_name: "auth_redis"
@@ -22,7 +22,7 @@ services:
       env_file:
         - .env
       networks:
-        - auth_service_network
+        - all_service_network
 
     auth:
       container_name: "auth"
@@ -33,9 +33,9 @@ services:
         auth_db:
           condition: service_healthy
       expose:
-        - 8001
+        - 8002
       networks:
-        - auth_service_network
+        - all_service_network
 
     auth_nginx:
       container_name: "auth_nginx"
@@ -47,13 +47,13 @@ services:
       depends_on:
         - auth
       ports:
-        - ${NGINX_PORTS}
+        - ${NGINX_PORTS_AUTH}
       networks:
-        - auth_service_network
+        - all_service_network
 
 volumes:
   pg_auth_data:
 
 networks:
-  auth_service_network:
+  all_service_network:
     driver: bridge
