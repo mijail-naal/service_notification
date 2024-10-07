@@ -29,7 +29,7 @@ app = FastAPI(
     openapi_url='/api/openapi.json',
     default_response_class=ORJSONResponse,
     lifespan=lifespan,
-    debug=True
+    # debug=True
 )
 
 
@@ -43,5 +43,5 @@ if __name__ == '__main__':
         port=8001,
         log_config=LOGGING,
         log_level=logging.DEBUG,
-        reload=True
+        # reload=True
     )
