@@ -2,14 +2,14 @@
 
 ### Description
 
-The notification service is responsible for communicating with the user via Email, mobile push notifications, and websocket in the browser. This is a frequently solved business problem in commercial development. Business performance depends on proper communication with the user.
+The notification service is responsible for communicating with the user via Email, mobile push notifications, and a websocket in the browser. This is a frequently solved business problem in commercial development. Business performance depends on proper communication with the user.
 
 Project content:
 - GitHub actions (continuous integration)
-- Admin panel with Django to create and send email notification
+- Admin panel with Django to create and send an email notification
 - Authorization service
-- API to send a notification message to broker
-- Worker to receive notifications and send email
+- API to send a notification message to a broker
+- Worker to receive notifications and send an email
 
 <br>
 
